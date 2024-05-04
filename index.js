@@ -1,13 +1,13 @@
-function searchMatrix(matrix, target) {
-  if (matrix.length === 0 || matrix[0].length === 0) return false;
-  const rows = matrix.length;
-  const cols = matrix[0].length;
-  let row = 0;
-  let col = cols - 1;
-  while (row < rows && col >= 0) {
-    if (matrix[row][col] === target) return true;
-    else if (matrix[row][col] < target) row++;
-    else col--;
+function jump(nums) {
+  let jumps = 0;
+  let currentEnd = 0;
+  let farthest = 0;
+  for (let i = 0; i < nums.length - 1; i++) {
+    farthest = Math.max(farthest, i + nums[i]);
+    if (i === currentEnd) {
+      jumps++;
+      currentEnd = farthest;
+    }
   }
-  return false;
+  return jumps;
 }
